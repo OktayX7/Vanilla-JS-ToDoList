@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <main>
+      <!-- reusable components -->
+      <%=
+      require('html-loader!../partials/header.html').default
+      %>
+      <!-- <section>
+        <div
+          id="rockPaperScissors"
+          style="max-width: 600px; margin: 0 auto"
+        >
+          <h1 class="text-center my-5">
+            Rock Paper Scissors
+          </h1>
+
+          <div id="rpsFormDiv">
+            <form
+              id="rpsForm"
+              class="d-flex flex-column text-center py-5"
+            >
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                minlength="3"
+                maxlength="10"
+                required
+              />
+              <button
+                type="submit"
+                class="btn btn-lg btn-primary mt-3 mx-auto"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+
+          <div id="rpsGameDiv">
+            <div id="rpsFrame">
+              <div class="text-center">
+                <div
+                  class="d-inline-block fw-bold fs-1 mx-5"
+                >
+                  <div id="username"></div>
+                  <div id="userScore"></div>
+                </div>
+                <div
+                  class="d-inline-block fw-bold fs-1 mx-5"
+                >
+                  <div>Computer</div>
+                  <div id="computerScore"></div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-around">
+                <div
+                  id="userChoice"
+                  class="fs-2 mx-5"
+                ></div>
+                <div
+                  id="computerChoice"
+                  class="fs-2 mx-5"
+                ></div>
+              </div>
+
+              <div class="result my-3">
+                <h2
+                  class="text-center p-3"
+                  id="result"
+                ></h2>
+              </div>
+            </div>
+
+            <div id="rpsButtons" class="text-center my-3">
+              <button class="btn btn-primary" id="rock">
+                Rock
+              </button>
+              <button class="btn btn-primary" id="paper">
+                Paper
+              </button>
+              <button class="btn btn-primary" id="scissors">
+                Scissors
+              </button>
+            </div>
+
+            <div class="text-center mb-5">
+              <button class="btn btn-secondary" id="reset">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-none">
+          <div id="youtubeList">
+            <form id="addVideo" class="my-4">
+              <div class="input-group">
+                <input
+                  type="url"
+                  class="form-control"
+                  placeholder="paste youtube url here"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Add
+                </button>
+              </div>
+            </form>
+
+            <div class="row mb-5">
+              <div class="col-4">
+                <aside id="sidebar">
+                  <ul></ul>
+                </aside>
+              </div>
+              <div class="col-8">
+                <section id="content"></section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <section>
+        <div
+          class="container"
+          id="todoList"
+          style="max-width: 600px; margin: 0 auto">
+          <div>
+            <h1 class="text-center my-5">Todo List</h1>
+            <div class="row">
+              <div class="col-12">
+                <div id="form" class="my-4">
+                  <div>
+                    <ul id="toDoList"></ul>
+                  </div>
+                  <div class="input-group">
+                    <input
+                      id="todoInput"
+                      type="text"
+                      class="form-control"
+                      placeholder="add todo here" />
+                    <button
+                      id="addTodo"
+                      type="button"
+                      class="btn btn-primary">
+                      Add
+                    </button>
+                  </div>
+                  <button
+                    id="completedAll"
+                    class="btn btn-secondary d-block mx-auto mt-3">
+                    Hepsi Tamamlandı
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%=
+      require('html-loader!../partials/footer.html').default
+      %>
+    </main>
+  </body>
+</html>
