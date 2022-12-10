@@ -4,10 +4,27 @@ const toDoList = {
   listEl: document.getElementById("toDoList"),
   addButtonEl: document.getElementById("addTodo"),
   formEl: document.getElementById("form"),
-  completedAllBtn: document.getElementById("completedAll"),
+
+  completedAllBtn: null,
 
   init() {
     console.log("init to do list");
+
+    const completedAllBtn =
+      document.createElement("button");
+    completedAllBtn.textContent = "Hepsi Tamamlandı";
+    completedAllBtn.classList.add(
+      "btn",
+      "btn-success",
+      "d-block",
+      "mx-auto",
+      "my-3"
+    );
+    console.log(completedAllBtn);
+
+    this.completedAllBtn = completedAllBtn;
+    this.formEl.appendChild(this.completedAllBtn);
+
     this.displayTodos();
     this.addButtonEl.addEventListener("click", () => {
       if (this.inputEl.value === "") {
@@ -29,8 +46,12 @@ const toDoList = {
       const li = document.createElement("li");
       li.textContent = "Yapılacak bir şey yok";
       this.listEl.appendChild(li);
+      this.completedAllBtn.classList.remove("d-block");
+      this.completedAllBtn.classList.add("d-none");
     } else {
       console.log("Yapılacaklar listem:");
+      this.completedAllBtn.classList.remove("d-none");
+      this.completedAllBtn.classList.add("d-block");
 
       for (let i = 0; i < this.toDos.length; i++) {
         if (this.toDos[i].completed === true) {
@@ -43,7 +64,7 @@ const toDoList = {
             "d-flex",
             "justify-content-between",
             "align-items-center",
-            "text-bg-light",
+            "text-bg-success",
             "rounded-3",
             "mb-2",
             "p-2"
@@ -78,8 +99,6 @@ const toDoList = {
           });
 
           this.listEl.appendChild(li);
-          console.log(dltBtn);
-          console.log(li);
         } else {
           console.log("( )", this.toDos[i].toDoText);
 
@@ -127,6 +146,7 @@ const toDoList = {
             const newText = prompt(
               "Güncellemek istediğiniz görevi giriniz.."
             );
+
             this.changeToDo(i, newText);
           });
 
@@ -135,8 +155,6 @@ const toDoList = {
           });
 
           this.listEl.appendChild(li);
-          console.log(dltBtn);
-          console.log(li);
         }
       }
     }
@@ -168,6 +186,7 @@ const toDoList = {
       return;
     }
     this.toDos[index].toDoText = newText;
+    this.toDos[index].toDoText += " (Düzenlendi)";
     this.listEl.innerHTML = "";
     this.displayTodos();
 
@@ -197,10 +216,8 @@ const toDoList = {
       } else {
         todo.toDoText += " (Tamamlandı)";
       }
-
-      this.listEl.innerHTML = "";
     });
-
+    this.listEl.innerHTML = "";
     this.displayTodos();
   },
 };
